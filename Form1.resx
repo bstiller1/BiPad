@@ -120,4 +120,32 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>166, 26</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAA
+        AAAARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF
+        //8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF
+        //8ARf//AEX//wBF//8ARf//AEX//wJG//8CR///Akf//wFG//8ARf//AUX//wJH//8CR///Akf//wBF
+        //8ARf//AEX//wBF//8ARf//AEX//wBG//8AP///ADn//wA4//8APP//Akb//wBF//8AOv//ADj//wA6
+        //8DRv//AEX//wBF//8ARf//AEX//wBF//8FQ///LV7//0Nz//9Fef//IWn//wA///8MQ///RXH//0V4
+        //8vcf//AEL//wBG//8ARf//AEX//wJF//8AR///JDr//+bQ//+11f//rbv//77a//84e///iHn//63X
+        //+tvf//1dn//0CZ//8AOv//AUf//wBF//8CRf//AEf//yQ7//+8xP//AF///wAc//+Gcv//nsv//zlr
+        //8ARv//ACX//01E///C3///AEz//wNF//8ARv//AkX//wBH//8kO///xsb//yuB//8WR///mJH//3q2
+        //8APf//BD///xhM//+7rv//j8X//wBC//8CRv//AEX//wJF//8AR///ITr//93I///I4P//19f//3jE
+        //8CUP//Ez3//4KR///Q4v//drn//wVM//8AQv//AEb//wBF//8CRf//AEf//yQ7///Exv//AGv//xoy
+        //+5vf//HnH//39q//+64P//CFf//wA3//8APf//AEb//wBF//8ARf//AkX//wBH//8lO///xsf//wBv
+        //8EIf//zLr//ziR//+qlP//X7X//wAg//8BSP//T3f//wBB//8BRv//AEX//wJF//8AR///IDr//9fE
+        ///J4P//0dP//57P//8HXP//Lkv//76u///J1P//ydn//1Of//8APf//Akf//wBF//8ARf//AEX//wFF
+        //8ISf//E1H//xFU//8BSf//AEP//wBB//8JRv//E1T//xJS//8ARv//AEX//wBF//8ARf//AEX//wBF
+        //8ARf//AET//wBC//8AQf//AEP//wBF//8BRv//AET//wBB//8AQv//AET//wBF//8ARf//AEX//wBF
+        //8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF
+        //8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF//8ARf//AEX//wBF
+        //8ARf//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>
