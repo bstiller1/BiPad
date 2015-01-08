@@ -13,6 +13,9 @@ namespace BiPad
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Global Variable FileName
+        /// </summary>
         public string FileName;
 
         public Form1()
@@ -23,11 +26,27 @@ namespace BiPad
         // File -> Close - File Menu Action
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Display a MsgBox asking the user to save changes or abort. 
-            if (MessageBox.Show("Do you want to save changes to your text?", "BiPad",
-               MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (FileName == null)
             {
-                // Call method to save file...
+                // Display a MsgBox asking the user to save changes or abort. 
+                if (MessageBox.Show("Do you want to save changes to your text?", "BiPad",
+                   MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // Open Save As Dialog
+                    SaveFileAs();
+                }
+                else
+                {
+                    // The user clicked NO and wants to exit the application. 
+                    // Close everything down.
+                    Application.Exit();
+                }
+            }
+            else if((FileName == null ) && (richTextBox1.Text == ""))
+            {
+                // The user wants to exit the application. There is no FilName and the richTextBox is empty. 
+                // Close everything down.
+                Application.Exit();
             }
             else
             {
@@ -46,63 +65,28 @@ namespace BiPad
                 
                 // Write text to file
                 using (StreamWriter sw = new StreamWriter(FileName))
+                {
                     sw.WriteLine(richTextBox1.Text);
 
-                //sw.Close();
-                GC.Collect();
+                    // Close the StreamWriter
+                    sw.Close();
+                    // Garbage Collection
+                    GC.Collect();
+                }
             }
             else
             {
-                // Write text to file
-                using (StreamWriter sw = new StreamWriter(FileName))
-                    sw.WriteLine(richTextBox1.Text);
-            }
+                // Open Save As Dialog
+                SaveFileAs();
+             }
 
         }
 
         // File -> Save As - File Menu Action
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //  This is for "Save As" dialog
-            //Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            // Save as Type: All Files and Text .txt Files
-            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            // Initial Default Save Directory "My Documents"
-            saveFileDialog1.InitialDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog1.FilterIndex = 2;
-            // Open last directory opened
-            saveFileDialog1.RestoreDirectory = true;
-            // If user clicked OK
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                
-                // Create StreamWriter Object to write the file
-                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
-                    sw.WriteLine(richTextBox1.Text);
-                // setting the global variable
-                FileName = saveFileDialog1.FileName;
-                
-                //MessageBox.Show("Current FileName: " + FileName);
-                GC.Collect();
-                // myStream.Close();
-            }
-            // User did not select a file name and closed the dialog
-            else if (saveFileDialog1.OpenFile() == null)
-            {
-
-            }
-            // User did not select a file name and clicked Cancel
-            else if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("That file is already open");
-            }
-
+            // Open Save As Dialog
+            SaveFileAs();
         }
 
         // File -> Open - File Menu Action
@@ -128,19 +112,79 @@ namespace BiPad
                     // Create StreamWriter Object to open the file
                     using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
                     {
+                        // setting the global variable
+                        FileName = openFileDialog1.FileName;
                         // Read the entire file into buffer
                         String line = sr.ReadToEnd();
                         // Put the file contents in the richTextBox1
                         richTextBox1.Text = line;
+                        // Close the StreamReader
+                        sr.Close();
+                        // Garbage Collection
+                        GC.Collect();
                     }
                 }
                     // If there is any problem reading the file
                 catch (Exception ex)
                 {
-                    Console.WriteLine("The file could not be read:");
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("The file could not be read:" + ex.Message);
                 }
             }
+        }
+
+        
+        /// <summary>
+        /// Save As Method:
+        /// Invokes the Save As Dialog
+        /// </summary>
+ 
+        public void SaveFileAs()
+        {
+            //  This is for "Save As" dialog
+            //Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            // Save as Type: All Files and Text .txt Files
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            // Initial Default Save Directory "My Documents"
+            saveFileDialog1.InitialDirectory =
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.FilterIndex = 2;
+            // Open last directory opened
+            saveFileDialog1.RestoreDirectory = true;
+
+            // If user clicked OK
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                // Create StreamWriter Object to write the file
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    sw.WriteLine(richTextBox1.Text);
+                    // setting the global variable
+                    FileName = saveFileDialog1.FileName;
+
+                    // Close the StreamWriter
+                    sw.Close();
+                    // Garbage Collection
+                    GC.Collect();
+                }
+
+            }
+            // User did not select a file name and closed the dialog
+            else if (saveFileDialog1.OpenFile() == null)
+            {
+
+            }
+            // User did not select a file name and clicked Cancel
+            else if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("That file is already open");
+            }
+
         }
     }
 }
