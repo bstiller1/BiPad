@@ -95,14 +95,21 @@ namespace BiPad
             //Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            // Open Default Directory "My Documents"
-            openFileDialog1.InitialDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (FileName != null)
+            {
+                // Open last directory opened
+                openFileDialog1.RestoreDirectory = true;
+            }
+            else
+            {
+                // Open Default Directory "My Documents"
+                openFileDialog1.InitialDirectory =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+            
             // Open Type: All Files and Text .txt Files
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
-            // Open last directory opened
-            openFileDialog1.RestoreDirectory = true;
 
             // If the user clicks OK
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -127,7 +134,7 @@ namespace BiPad
                     // If there is any problem reading the file
                 catch (Exception ex)
                 {
-                    MessageBox.Show("The file could not be read:" + ex.Message);
+                    MessageBox.Show("The file could not be read:" + ex.Message, "Cannot read the File");
                 }
             }
             else
@@ -150,13 +157,19 @@ namespace BiPad
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             // Save as Type: All Files and Text .txt Files
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            // Initial Default Save Directory "My Documents"
-            saveFileDialog1.InitialDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (FileName != null)
+            {
+                // Open last directory opened
+                saveFileDialog1.RestoreDirectory = true;
+            }
+            else
+            {
+                // Open Default Directory "My Documents"
+                saveFileDialog1.InitialDirectory =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
             saveFileDialog1.FilterIndex = 2;
-            // Open last directory opened
-            saveFileDialog1.RestoreDirectory = true;
-
+ 
             // If user clicked OK
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -191,7 +204,12 @@ namespace BiPad
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(" BiPad Text Editor \r\n Version 1.0 \r\n Blake Stiller Copyright © 2015 \r\n BlakeStiller.com");
+            MessageBox.Show(" BiPad Text Editor \r\n Version 1.0 \r\n Blake Stiller Copyright © 2015 \r\n BlakeStiller.com", "About");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(" If there are any issues, errors, or suggestions \r\n You can email me at: \r\n me@BlakeStiller.com", "Help");
         }
     }
 }
