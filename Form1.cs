@@ -130,6 +130,11 @@ namespace BiPad
                     MessageBox.Show("The file could not be read:" + ex.Message);
                 }
             }
+            else
+            {
+                // Close Dialog and Reset
+                openFileDialog1.Reset();
+            }
         }
 
         
@@ -170,21 +175,23 @@ namespace BiPad
                 }
 
             }
-            // User did not select a file name and closed the dialog
-            else if (saveFileDialog1.OpenFile() == null)
-            {
-
-            }
-            // User did not select a file name and clicked Cancel
-            else if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-            {
-
-            }
             else
             {
-                MessageBox.Show("That file is already open");
+                // Close Dialog and Reset
+                saveFileDialog1.Reset();
             }
 
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileName = null;
+            richTextBox1.Text = "";
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(" BiPad Text Editor \r\n Version 1.0 \r\n Blake Stiller Copyright © 2015 \r\n BlakeStiller.com");
         }
     }
 }
